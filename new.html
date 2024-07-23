@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <div id="header">
+    <div class="container">
+      <nav>
+        <img src="logo.png" alt="logo" width="200px">
+            <ul>
+               <li><a href="#header">Home</a></li>
+               <li><a href="#about">About</a></li>
+               <li><a href="#contact">Contact</a></li>
+            <a href="/Ankit's CV2.pdf" download class="btn btn2">Download CV</a>
+               <!-- <img width="48" height="48" class="hide visible" src="https://img.icons8.com/color/48/delete-sign--v1.png" alt="delete-sign--v1"/> -->
+               <!-- <div><a href="" class="btn btn2" >Download CV</a></div></li> -->
+               
+           </ul>
+           <!-- <img width="48" height="48" class="hide visible" src="https://img.icons8.com/fluency/48/menu--v3.png" alt="menu--v3"/> -->
+       </nav>
+       <div class="header-text">
+       <p>Web Developer & UI/UX designer</p>
+       <h1>I'm <span>Ankit</span> Kumar</h1>
+      </div>
+   </div>
+</div>
+
+<!-- ----------------about--------- -->
+
+<div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="about-col-1">
+                <img src="user1.png" alt="user">
+            </div>
+            <div class="about-col-2">
+                <h2 class="sub-title">About Me</h2>
+                <p>Dynamic and motivated BTech graduate in Electrical and Electronics Engineering from Nalanda College of Engineering,Nalanda. Possess a strong foundation in engineering principles and a keen interest in web development. Proficient in HTML, CSS, and JavaScript, with a passion for creating responsive and user- friendly websites. Eager to apply my technical skills and collaborate within a dynamic team environment in the field of web development.</p>
+                <div class="tab-titles">
+                    <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                    <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                    <p class="tab-links" onclick="opentab('education')">Education</p>
+                </div>
+                <div class="tab-contents active-tab" id="skills">
+                    <ul>
+                        <li><span>Web Development</span><br>Website App Development</li>
+                        <li><span>Data Analytics</span><br>Data Collection<br> Data Cleaning<br>Data Visualization<br>Reporting</li>
+                    </ul>
+
+                </div>
+                
+                <div class="tab-contents" id="experience">
+                    <ul>
+                        <li><span>2023-current</span><br>Work as self Web Developer</li>
+                        
+                    </ul>
+
+                </div>
+                <div class="tab-contents" id="education">
+                    <ul>
+                        <li><span>2019-2023</span><br>BTech in Electrical & Electronic Engineering<br>CGPA-7.56</li>
+                        <li><span>2019</span><br>Higher secodary<br>CBSE<br>Percentage-72.6</li>
+                        <li><span>2016</span><br>Secodary<br>CBSE<br>CGPA-8.6</li>
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- ------------------CONTACT----------- -->
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h2 class="sub-title">Contact Me</h2>
+                <p><img src="/email.png" alt="" width="25px"> ankitgupta20050120@gmail.com</p>
+                <p> <img src="/mobile.png" alt="" width="25px">+918228856993</p>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/ankit-kumar-231aa723a" target="_blank"><img src="/linkedin.png" alt="" width="30px"></a>
+                    <a href="https://www.instagram.com/ankit_gupta2008?utm_source=qr&igsh=MWpsdTcwdGZ6cnJ5OA==" target="_blank"><img src="/instagram.png" alt="" width="30px"></a>
+                    <a href="https://www.facebook.com/share/69rUQ5YeMrnwNfDt/?mibextid=qi2Omg" target="_blank"><img src="/facebook.png" alt="" width="30px"></a>
+                </div>
+            </div>
+            <div class="contact-right">
+                <form name='submit-to-google-sheet'>
+                    <input type="text" name="Name" placeholder="Your Name*" required>
+                    <input type="email" name="Email" placeholder="Your Email*" required>
+                    <textarea name="Message" rows="5" placeholder="Message*" required></textarea>
+                   <button type="submit" class="bton">Submit</button>
+                </form>
+                <span id="msg"></span>
+            </div>
+        </div>
+
+    </div>
+    <div class="copyright">
+        <p>Copyright © <span>A</span>nkit. All rights reserved.</p>
+    </div>
+</div>
+
+
+<script>
+    var tablinks  = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+
+    function opentab(tabname){
+        for(tablink of tablinks){
+            tablink.classList.remove("active-link");
+        }
+        for(tabcontent of tabcontents){
+            tabcontent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab");
+        
+
+
+    }
+</script>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyaVx9VR7WSnWenWOfLERZPv6tH6ddctVdWKUGIs169biqrmCVlt8ughxglB_qqu_GLTg/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg= document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML="Message sent successfully"
+            setTimeout(function(){
+                msg.innerHTML=""
+            },6000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+</body>
+</html> 
